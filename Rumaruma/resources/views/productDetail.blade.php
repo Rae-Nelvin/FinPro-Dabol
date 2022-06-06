@@ -1,14 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="w-full bg-[#C69B7B] mt-8">
+        <div class="w-full bg-[#C69B7B]">
             <div class="max-w-6xl py-8 mx-auto">
                 <h1 class="text-white font-semibold text-2xl">Home / Product / Product-Detail</h1>
             </div>
         </div>
     </x-slot>
 
-    <div class="max-w-6xl mx-auto mb-[231px]">
-        <div class="flex mt-16">
+    <div class="max-w-6xl mx-auto pb-[231px]">
+        <div class="flex pt-16">
             <div class="flex-col w-1/2">
                 <img src="{{ asset('assets/images/pict9.png') }}" class="w-[554px]" alt="">
                 <div class="flex space-x-7 mt-7">

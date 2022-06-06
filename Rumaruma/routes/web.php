@@ -25,6 +25,22 @@ Route::get('/success', function () {
     return view('success');
 })->name('success');
 
+Route::get('/cart', function () {
+    return view('cart');
+})->name('cart');
+
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->name('admin/dashboard');
+
+Route::get('/admin/barang', function () {
+    return view('admin.barang');
+})->name('admin/barang');
+
+Route::get('/admin/add/barang', function () {
+    return view('admin.addBarang');
+})->name('admin/add/barang');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

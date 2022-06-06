@@ -3,7 +3,7 @@
     <div class="login h-screen">
         <div class="pt-[139px] pl-[168px] flex-col w-[630px]">
             <h1 class="font-bold text-[64px]">Register Here!</h1>
-            <form action="login" action="POST">
+            <form action="{{ route('register') }}" method="POST">
                 @csrf
                 <label for="email">Email</label>
                 <input type="email" name="email" placeholder="Enter your email" class="border border-[#C69B7B] w-full py-4 px-[10px] bg-white my-2 rounded-lg" required>
@@ -24,6 +24,7 @@
                     <p class="ml-[21px] text-base text-[#000]/40">Sign in with Google</p>
                 </div>
             </button>
+            <a href="{{ route('login') }}"><p class="text-center text-blue-500">Already have an account? Login here</p></a>
         </div>
     </div>
 

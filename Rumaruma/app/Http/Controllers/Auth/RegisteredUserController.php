@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Str;
 
 class RegisteredUserController extends Controller
 {
@@ -33,17 +34,22 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->confirmPassword != $request->password) {
+            return back()->with('error', 'Password is not the same');
+        }
+
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'string'],
         ]);
 
         $user = User::create([
-            'name' => $request->name,
+            'name' => Str::beforeLast($request->email, '@'),
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => 'User',
         ]);
+
 
         event(new Registered($user));
 
