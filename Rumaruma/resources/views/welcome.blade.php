@@ -14,7 +14,7 @@
             <h2 class="pt-[82px] text-center font-semibold text-2xl">Produk Terlaris Saat Ini</h2>
         </div>
     </x-slot>
-
+    
     <div class="pt-[125px] max-w-5xl mx-auto">
         <div class="flex space-x-20">
             <div class="space-y-2">
@@ -23,9 +23,15 @@
                     <span class="font-bold">ELMATADORE</span><br>
                     Sofa Set, Light Brown, 285 x 200cm <br>
                     Rp 1,299,000,00
+                    @if(Auth::user())
                     <button class="bg-[#C69B7B] w-full py-1 rounded-lg mt-2 hover:bg-[#b48f72] transition-colors">
                         <p class="text-white text-center font-bold text-base">Buy Here</p>
                     </button>
+                    @else
+                        <button class="bg-[#9e9d9c] w-full py-1 rounded-lg mt-2 hover:bg-[#777777] transition-colors">
+                            <a href="{{ route('login') }}"><p class="text-white text-center font-bold text-base">Buy Here</p></a>
+                        </button>
+                    @endif
                 </p>
             </div>
             <div class="space-y-2">
@@ -34,9 +40,15 @@
                     <span class="font-bold">REXWEE</span><br>
                     Kursi Kecil, White <br>
                     Rp 1,199,000,00
+                    @if(Auth::user())
                     <button class="bg-[#C69B7B] w-full py-1 rounded-lg mt-2 hover:bg-[#b48f72] transition-colors">
                         <p class="text-white text-center font-bold text-base">Buy Here</p>
                     </button>
+                    @else
+                        <button class="bg-[#9e9d9c] w-full py-1 rounded-lg mt-2 hover:bg-[#777777] transition-colors">
+                            <a href="{{ route('login') }}"><p class="text-white text-center font-bold text-base">Buy Here</p></a>
+                        </button>
+                    @endif
                 </p>
             </div>
             <div class="space-y-2">

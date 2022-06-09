@@ -10,7 +10,11 @@
                 <a href="{{ route('admin/barang') }}"><h2 class="text-white text-2xl font-bold">Manage Barang</h2></a>
                 <hr class="bg-white">
             </div>
-            <h2 class="text-2xl text-red-600 font-bold text-center">Logout</h2>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <h2 class="text-2xl text-red-600 font-bold text-center cursor-pointer" onclick="event.preventDefault();
+                this.closest('form').submit();">Logout</h2>
+            </form>
         </div>
         <div class="flex flex-col w-2/3 bg-white pt-14 px-11 pb-8 rounded-2xl">
             <div class="flex justify-between">
@@ -29,66 +33,20 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($data as $transaction)
                         <tr>
-                            <td>1</td>
-                            <td>9 Square VIP Residence</td>
-                            <td>Verified</td>
-                            <td>Pesanggrahan</td>
-                            <td>Pending</td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $transaction->id }}</td>
+                            <td>{{ $transaction->name }}</td>
+                            <td>{{ $transaction->address }}</td>
+                            <td>{{ $transaction->status }}</td>
                             <td>
                                 <button class="py-2 px-4 text-center text-white bg-blue-500 rounded-2xl">Detail</button>
                                 <button class="py-2 px-4 text-center text-white bg-green-500 rounded-2xl">Done</button>
                                 <button class="py-2 px-4 text-center text-white bg-red-500 rounded-2xl mt-2">Delete</button>
                             </td>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>9 Square VIP Residence</td>
-                            <td>Verified</td>
-                            <td>Pesanggrahan</td>
-                            <td><button class="false-btn">False</button></td>
-                            <td>
-                                <button class="py-2 px-4 text-center text-white bg-blue-500 rounded-2xl">Detail</button>
-                                <button class="py-2 px-4 text-center text-white bg-green-500 rounded-2xl">Done</button>
-                                <button class="py-2 px-4 text-center text-white bg-red-500 rounded-2xl mt-2">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>9 Square VIP Residence</td>
-                            <td>Verified</td>
-                            <td>Pesanggrahan</td>
-                            <td><button class="false-btn">False</button></td>
-                            <td>
-                                <button class="py-2 px-4 text-center text-white bg-blue-500 rounded-2xl">Detail</button>
-                                <button class="py-2 px-4 text-center text-white bg-green-500 rounded-2xl">Done</button>
-                                <button class="py-2 px-4 text-center text-white bg-red-500 rounded-2xl mt-2">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>9 Square VIP Residence</td>
-                            <td>Verified</td>
-                            <td>Pesanggrahan</td>
-                            <td><button class="false-btn">False</button></td>
-                            <td>
-                                <button class="py-2 px-4 text-center text-white bg-blue-500 rounded-2xl">Detail</button>
-                                <button class="py-2 px-4 text-center text-white bg-green-500 rounded-2xl">Done</button>
-                                <button class="py-2 px-4 text-center text-white bg-red-500 rounded-2xl mt-2">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>9 Square VIP Residence</td>
-                            <td>Verified</td>
-                            <td>Pesanggrahan</td>
-                            <td><button class="false-btn">False</button></td>
-                            <td>
-                                <button class="py-2 px-4 text-center text-white bg-blue-500 rounded-2xl">Detail</button>
-                                <button class="py-2 px-4 text-center text-white bg-green-500 rounded-2xl">Done</button>
-                                <button class="py-2 px-4 text-center text-white bg-red-500 rounded-2xl mt-2">Delete</button>
-                            </td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

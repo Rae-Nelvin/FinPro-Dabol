@@ -8,7 +8,7 @@
                 <h1 class="text-3xl font-bold">Add Barang</h1>
             </div>
             <div class="mt-16">
-                <form action="#" method="POST" id="barangform" class="flex flex-col">
+                <form action="{{ route('admin/add/barang') }}" method="POST" id="barangform" class="flex flex-col" enctype="multipart/form-data">
                     @csrf
                     <label for="Name" class="font-bold text-lg">Nama Barang</label>
                     <input type="text" name="name" class="mt-4 border border-[#C69B7B] rounded-xl px-4 py-4" placeholder="Input nama barang" required>
@@ -27,8 +27,8 @@
                     <label for="Desc" class="mt-4 font-bold text-lg">Deskripsi Barang</label>
                     <textarea name="description" id="barangform" class="h-[200px] border border-[#C69B7B] rounded-xl px-4 py-4 mt-4" placeholder="Input barang description"></textarea>
                     <label for="Picture" class="mt-4 font-bold text-lg">Gambar Barang</label>
-                    <input type="file" name="picture" class="mt-4">
-                    <button class="mt-10 bg-[#C69B7B] py-4 text-center font-bold text-2xl text-white rounded-2xl">
+                    <input type="file" name="picture" class="mt-4" accept="image/*,.pdf">
+                    <button class="mt-10 bg-[#C69B7B] py-4 text-center font-bold text-2xl text-white rounded-2xl hover:bg-[#b48f72]">
                         Save Barang
                     </button>
                 </form>

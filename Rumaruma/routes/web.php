@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,28 +22,36 @@ Route::get('/productDetail', function () {
     return view('productDetail');
 })->name('productDetail');
 
-Route::get('/success', function () {
-    return view('success');
-})->name('success');
+Route::group(['middleware' => 'auth'], function () {
+    Route::prefix('user/')->name('user/')->group(function () {
+        Route::get('/success', function () {
+            return view('success');
+        })->name('success');
 
-Route::get('/cart', function () {
-    return view('cart');
-})->name('cart');
+        Route::get('/cart', function () {
+            return view('cart');
+        })->name('cart');
+    });
+});
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-})->name('admin/dashboard');
+Route::group(['middleware' => 'isAdmin'], function () {
+    Route::prefix('admin/')->name('admin/')->group(function () {
+        Route::get('/dashboard', [AdminController::class, 'createDashboard'])->name('dashboard');
 
-Route::get('/admin/barang', function () {
-    return view('admin.barang');
-})->name('admin/barang');
+        Route::get('/barang', [AdminController::class, 'createBarang'])->name('barang');
+        Route::get('/detail/barang/{id}', [AdminController::class, 'createDetailBarang'])->name('detail/barang');
+        Route::get('/delete/barang/{id}', [AdminController::class, 'storeDeleteBarang'])->name('delete/barang');
 
-Route::get('/admin/add/barang', function () {
-    return view('admin.addBarang');
-})->name('admin/add/barang');
+        Route::get('/add/barang', function () {
+            return view('admin.addBarang');
+        })->name('add/barang');
+
+        Route::post('/add/barang', [AdminController::class, 'storeBarang'])->name('add/barang');
+    });
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->name('dashboard');
 
 require __DIR__ . '/auth.php';

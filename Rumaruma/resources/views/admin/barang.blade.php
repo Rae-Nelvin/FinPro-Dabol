@@ -10,12 +10,12 @@
                 <a href="{{ route('admin/barang') }}"><h2 class="text-white text-2xl font-bold">Manage Barang</h2></a>
                 <hr class="bg-white">
             </div>
-            <h2 class="text-2xl text-red-600 font-bold text-center">Logout</h2>
+            <a href="{{ route('logout') }}"><h2 class="text-2xl text-red-600 font-bold text-center">Logout</h2></a>
         </div>
         <div class="flex flex-col w-2/3 bg-white pt-14 px-11 pb-8 rounded-2xl">
             <div class="flex justify-between">
                 <h1 class="text-3xl font-bold">Manage Barang</h1>
-                <button class="bg-[#C69B7B] py-2 px-8 text-center text-white font-bold text-lg rounded-xl hover:bg-[#a07d63] transition-colors">Tambah Barang</button>
+                <a href="{{ route('admin/add/barang') }}"><button class="bg-[#C69B7B] py-2 px-8 text-center text-white font-bold text-lg rounded-xl hover:bg-[#a07d63] transition-colors">Tambah Barang</button></a>
             </div>
             <div class="mt-16">
                 <table id="datatables">
@@ -29,61 +29,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($data as $barang)
                         <tr>
-                            <td>1</td>
-                            <td>9 Square VIP Residence</td>
-                            <td>Verified</td>
-                            <td>Pesanggrahan</td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $barang->id }}</td>
+                            <td>{{ $barang->stock }}</td>
+                            <td>Rp. {{ $barang->price }}</td>
                             <td>
-                                <button class="py-2 px-4 text-center text-white bg-blue-500 rounded-2xl">Detail</button>
-                                <button class="py-2 px-4 text-center text-white bg-green-500 rounded-2xl">Edit</button>
-                                <button class="py-2 px-4 text-center text-white bg-red-500 rounded-2xl mt-2">Delete</button>
+                                <a href="{{ route('admin/detail/barang', $barang->id) }}"><button class="py-2 px-4 text-center text-white bg-blue-500 rounded-2xl">Detail</button></a>
+                                <a href="{{ route('admin/delete/barang', $barang->id) }}"><button class="py-2 px-4 text-center text-white bg-red-500 rounded-2xl mt-2">Delete</button></a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>9 Square VIP Residence</td>
-                            <td>Verified</td>
-                            <td>Pesanggrahan</td>
-                            <td>
-                                <button class="py-2 px-4 text-center text-white bg-blue-500 rounded-2xl">Detail</button>
-                                <button class="py-2 px-4 text-center text-white bg-green-500 rounded-2xl">Edit</button>
-                                <button class="py-2 px-4 text-center text-white bg-red-500 rounded-2xl mt-2">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>9 Square VIP Residence</td>
-                            <td>Verified</td>
-                            <td>Pesanggrahan</td>
-                            <td>
-                                <button class="py-2 px-4 text-center text-white bg-blue-500 rounded-2xl">Detail</button>
-                                <button class="py-2 px-4 text-center text-white bg-green-500 rounded-2xl">Edit</button>
-                                <button class="py-2 px-4 text-center text-white bg-red-500 rounded-2xl mt-2">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>9 Square VIP Residence</td>
-                            <td>Verified</td>
-                            <td>Pesanggrahan</td>
-                            <td>
-                                <button class="py-2 px-4 text-center text-white bg-blue-500 rounded-2xl">Detail</button>
-                                <button class="py-2 px-4 text-center text-white bg-green-500 rounded-2xl">Edit</button>
-                                <button class="py-2 px-4 text-center text-white bg-red-500 rounded-2xl mt-2">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>9 Square VIP Residence</td>
-                            <td>Verified</td>
-                            <td>Pesanggrahan</td>
-                            <td>
-                                <button class="py-2 px-4 text-center text-white bg-blue-500 rounded-2xl">Detail</button>
-                                <button class="py-2 px-4 text-center text-white bg-green-500 rounded-2xl">Edit</button>
-                                <button class="py-2 px-4 text-center text-white bg-red-500 rounded-2xl mt-2">Delete</button>
-                            </td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

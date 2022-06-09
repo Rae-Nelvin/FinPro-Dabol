@@ -1,12 +1,12 @@
 <x-app-layout>
 
     <x-slot name="header">
-        <div class="flex justify-center mt-20">
+        <div class="flex justify-center pt-20">
             <img src="{{ asset('assets/images/pict11.png') }}" class="w-[322px]" alt="">
         </div>
     </x-slot>
 
-    <div class="flex flex-col justify-center aligns-center mb-40">
+    <div class="flex flex-col justify-center aligns-center pb-40">
         <h1 class="font-bold text-[32px] text-center mt-[50px]">Thank You For Buying Our Product</h1>
         <h2 class="mt-4 text-base text-center">Use RumaRuma to found your best furniture <br>
             for you.

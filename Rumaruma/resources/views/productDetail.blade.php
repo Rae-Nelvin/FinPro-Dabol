@@ -23,9 +23,15 @@
                 <h2 class="font-semibold text-[32px] mt-14 text-[#6A3B2B]">Rp499,000,00</h2>
                 <p class="mt-14 text-[#9D9EA0] leading-[32px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt cras tellus arcu gravida semper mi fringilla eu. Leo euismod ultrices sed natoque est molestie at. Egestas gravida pharetra, facilisi libero. Venenatis sagittis duis sed .cursus erat nibh. Sit massa mollis senectus gravida sit ornare sit magna. Nullam facilisis placerat congue et elit. Elit sed at montes, integer.
                     Fermentum accumsan id pellentesque varius cras mattis dictum lectus. Rutrum pellentesque donec amet risus tempus elit mattis. Nec amet metus dignissim enim lacus. Condimentum id lobortis cras auctor ac risus in in. Faucibus aliquam vitae amet, gravida tellus. Metus, urna sed gravida cursus urna in non mattis nullam.</p>
-                <button class="bg-[#C69B7B] w-[327px] py-4 rounded-lg mt-14">
+                @if(Auth::user())
+                <button class="bg-[#C69B7B] w-[327px] py-4 rounded-lg mt-14 hover:bg-[#b48f72]">
                     <h3 class="font-bold text-white text-center">Add to cart</h3>
                 </button>
+                @else
+                <button class="bg-[#9e9d9c] w-[327px] py-4 rounded-lg mt-14 hover:bg-[#777777]">
+                    <a href="{{ route('login') }}"><h3 class="font-bold text-white text-center">Add to cart</h3></a>
+                </button>
+                @endif
             </div>
         </div>
         <h1 class="font-semibold text-[32px] mt-[70px]">Maybe You Like it</h1>
@@ -36,7 +42,11 @@
                 <p class="font-medium text-sm">Kursi Kecil, Black <br>
                     Rp 1,199,000,00
                 </p>
-                <button class="bg-[#C69B7B] w-full py-2 mt-2 rounded-3xl"><p class="font-bold text-white">Buy Now</p></button>
+                @if(Auth::user())
+                <button class="bg-[#C69B7B] w-full py-2 mt-2 rounded-3xl hover:bg-[#b48f72]"><p class="font-bold text-white">Buy Now</p></button>
+                @else
+                <a href="{{ route('login') }}"><button class="bg-[#9e9d9c] w-full py-2 mt-2 rounded-3xl hover:bg-[#777777]"><p class="font-bold text-white">Buy Now</p></button></a>
+                @endif
             </div>
             <div>
                 <img src="{{ asset('assets/images/pict3.png') }}" class="w-[197px]" alt="">

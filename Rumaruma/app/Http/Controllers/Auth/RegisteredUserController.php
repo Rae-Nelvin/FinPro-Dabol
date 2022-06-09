@@ -50,7 +50,6 @@ class RegisteredUserController extends Controller
             'role' => 'User',
         ]);
 
-
         event(new Registered($user));
 
         Auth::login($user);
