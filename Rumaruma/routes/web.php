@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,13 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [UserController::class, 'createWelcome'])->name('welcome');
 
-Route::get('/productDetail', function () {
-    return view('productDetail');
-})->name('productDetail');
+
+Route::get('/productDetail/{id}', [UserController::class, 'createProductDetail'])->name('productDetail');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::prefix('user/')->name('user/')->group(function () {
@@ -28,9 +26,11 @@ Route::group(['middleware' => 'auth'], function () {
             return view('success');
         })->name('success');
 
-        Route::get('/cart', function () {
-            return view('cart');
-        })->name('cart');
+        Route::post('/productDetail', [UserController::class, 'storeProductDetail'])->name('productDetail');
+        Route::get('/cart', [UserController::class, 'createCart'])->name('cart');
+        Route::post('/cart', [UserController::class, 'storeCart'])->name('cart');
+        Route::post('/quantityCart', [UserController::class, 'quantityCart'])->name('quantityCart');
+        Route::post('/search', [UserController::class, 'search'])->name('search');
     });
 });
 
@@ -47,6 +47,8 @@ Route::group(['middleware' => 'isAdmin'], function () {
         })->name('add/barang');
 
         Route::post('/add/barang', [AdminController::class, 'storeBarang'])->name('add/barang');
+        Route::get('/transaction/accept/{id}', [AdminController::class, 'acceptTransaction'])->name('transaction/accept');
+        Route::get('/transaction/delete/{id}', [AdminController::class, 'deleteTransaction'])->name('transaction/delete');
     });
 });
 

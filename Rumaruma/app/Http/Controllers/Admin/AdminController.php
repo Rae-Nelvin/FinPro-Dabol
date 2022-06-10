@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Barang;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use File;
 
 class AdminController extends Controller
 {
@@ -50,15 +52,33 @@ class AdminController extends Controller
 
     public function createDetailBarang($id)
     {
-        $data = Barang::where('id', $id)->first()->get();
+        $data = Barang::where('id', $id)->first();
+        // $data = DB::table('barangs')->where('id', $id)->first();
         return view('admin.productDetail', ['data' => $data]);
     }
 
     public function storeDeleteBarang($id)
     {
-        $delete = Barang::where('id', $id)->first()->get();
-        $delete->each->delete();
+        $delete = Barang::where('id', $id)->first();
+        File::delete(public_path('barangImage/' . $delete->image));
+        Barang::where('id', $id)->delete();
 
         return redirect('admin/barang');
+    }
+
+    public function acceptTransaction($id)
+    {
+        Transaction::where('id', $id)->update([
+            'status' => 'Accepted',
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function deleteTransaction($id)
+    {
+        Transaction::where('id', $id)->delete();
+
+        return redirect()->back();
     }
 }

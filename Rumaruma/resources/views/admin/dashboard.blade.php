@@ -41,9 +41,8 @@
                             <td>{{ $transaction->address }}</td>
                             <td>{{ $transaction->status }}</td>
                             <td>
-                                <button class="py-2 px-4 text-center text-white bg-blue-500 rounded-2xl">Detail</button>
-                                <button class="py-2 px-4 text-center text-white bg-green-500 rounded-2xl">Done</button>
-                                <button class="py-2 px-4 text-center text-white bg-red-500 rounded-2xl mt-2">Delete</button>
+                                <a href="{{ route('admin/transaction/accept', $transaction->id) }}"><button class="py-2 px-4 text-center text-white bg-green-500 rounded-2xl">Done</button></a>
+                                <a href="{{ route('admin/transaction/delete', $transaction->id) }}"><button class="py-2 px-4 text-center text-white bg-red-500 rounded-2xl mt-2">Delete</button></a>
                             </td>
                         </tr>
                         @endforeach
