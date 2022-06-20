@@ -15,9 +15,9 @@ class UserController extends Controller
 {
     public function createWelcome()
     {
-        $data1 = Barang::latest('created_at')->first();
-        $data = Barang::get();
-        return view('welcome', ['data1' => $data1, 'data' => $data]);
+        $data = Barang::take(4)->orderBy('id', 'asc')->get();
+        $data2 = Barang::take(4)->orderBy('id', 'desc')->take(3)->get();
+        return view('welcome', ['data' => $data, 'data2' => $data2]);
     }
 
     public function createProductDetail($id)

@@ -4,7 +4,7 @@
         <div class="flex justify-between h-16">
             <!-- Logo -->
             <div class="shrink-0 flex items-center">
-                <a href="{{ route('dashboard') }}">
+                <a href="{{ route('welcome') }}">
                     <h1 class="font-bold">
                         Ruma <br>
                         Ruma
@@ -14,19 +14,19 @@
 
             <!-- Navigation Links -->
             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <x-nav-link :href="route('welcome')" :active="request()->routeIs('welcome')">
                     <h1 class="font-normal text-lg">Home</h1>
                 </x-nav-link>
-                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <x-nav-link :href="route('welcome')" :active="request()->routeIs('welcome')">
                     <h1 class="font-normal text-lg">Shop</h1>
                 </x-nav-link>
-                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <x-nav-link :href="route('welcome')" :active="request()->routeIs('welcome')">
                     <h1 class="font-normal text-lg">Sale</h1>
                 </x-nav-link>
-                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <x-nav-link :href="route('welcome')" :active="request()->routeIs('welcome')">
                     <h1 class="font-normal text-lg">Product</h1>
                 </x-nav-link>
-                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <x-nav-link :href="route('welcome')" :active="request()->routeIs('welcome')">
                     <h1 class="font-normal text-lg">Contact</h1>
                 </x-nav-link>
             </div>

@@ -21,7 +21,7 @@ class BarangSeeder extends Seeder
             'price' => 12999000,
             'stock' => 100,
             'description' => 'sofa set, light brown, 285x200 cm',
-            'image' => 'Kursi/Pict 1.png'
+            'image' => 'Kursi/pict1.png'
         ]);
 
         Barang::create([
@@ -30,7 +30,7 @@ class BarangSeeder extends Seeder
             'price' => 10999000,
             'stock' => 100,
             'description' => 'Kursi Kecil, White',
-            'image' => 'Kursi/Pict 2.png'
+            'image' => 'Kursi/pict2.png'
         ]);
 
         Barang::create([
@@ -39,7 +39,7 @@ class BarangSeeder extends Seeder
             'price' => 9999000,
             'stock' => 100,
             'description' => 'Kursi Kecil, Brown',
-            'image' => 'Kursi/Pict 3.png'
+            'image' => 'Kursi/pict3.png'
         ]);
 
         Barang::create([
@@ -48,7 +48,7 @@ class BarangSeeder extends Seeder
             'price' => 11999000,
             'stock' => 100,
             'description' => 'Kursi Kecil, Black',
-            'image' => 'Kursi/Pict 4.png'
+            'image' => 'Kursi/pict9.png'
         ]);
 
         Barang::create([
@@ -57,7 +57,7 @@ class BarangSeeder extends Seeder
             'price' => 12999000,
             'stock' => 100,
             'description' => 'Meja Kecil, Brown',
-            'image' => 'Meja/Pict 4.png'
+            'image' => 'Meja/pict5.png'
         ]);
 
         Barang::create([
@@ -66,7 +66,7 @@ class BarangSeeder extends Seeder
             'price' => 14999000,
             'stock' => 100,
             'description' => 'Meja Rias, Brown',
-            'image' => 'Meja/Pict 5.png'
+            'image' => 'Meja/pict6.png'
         ]);
 
         Barang::create([
@@ -75,7 +75,7 @@ class BarangSeeder extends Seeder
             'price' => 899000,
             'stock' => 100,
             'description' => 'Lampu, Bronze',
-            'image' => 'Lampu/Pict 6.png'
+            'image' => 'Lampu/pict7.png'
         ]);
     }
 }
