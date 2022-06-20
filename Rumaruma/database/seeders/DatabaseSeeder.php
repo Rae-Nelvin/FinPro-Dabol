@@ -31,5 +31,9 @@ class DatabaseSeeder extends Seeder
             'role' => 'User',
             'password' => Hash::make('anon123')
         ]);
+
+        $this->call([
+            BarangSeeder::class,
+        ]);
     }
 }
