@@ -60,7 +60,7 @@ class UserController extends Controller
             // If New Transaction
         } else {
 
-            Transaction::create([
+            $transaction = Transaction::create([
                 'name' => Auth::user()->id,
                 'phone' => 'Pending',
                 'address' => 'Pending',
@@ -69,8 +69,10 @@ class UserController extends Controller
                 'totalPrice' => $barang->price,
             ]);
 
+            $transaction->save();
+
             TransactionDetail::create([
-                'transactionID' => Transaction::count(),
+                'transactionID' => $transaction['id'],
                 'barangID' => $request->id,
                 'quantity' => 1,
             ]);
